@@ -11,7 +11,8 @@ import Nav from './nav.js'
 import Contact from './Contact.js'
 import Chip from '@mui/material/Chip';
 import DoneIcon from '@mui/icons-material/Done';
-
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {useState} from 'react';
@@ -59,32 +60,33 @@ if(descriptions.length === 0) {
 function checkClicked(ind) {
   return (e) => {
     let temp = [...checkboxes];
-    if(e.target.checked)
-      temp[ind] = 1;
-    else
-    temp[ind] = 0;
+    temp[ind] = (temp[ind]+1)%2;
     setCheckboxes(temp);
   };
 }
 
 const checkbox_vals = alltags.map((tag,ind) => 
-    <input type="checkbox" label = {tag} onClick={checkClicked(ind)} style={{display:"none"}}/>
+    <input type="checkbox" label = {tag} style={{display:"none"}}/>
     // <Chip label={tag} deleteIcon={<DoneIcon />} style={{backgroundColor:"#000000"}}onClick={checkClicked(ind)}  />
 );
 const tag_menu = alltags.map((tag,ind) => 
-  checkboxes[ind] == 1?
-  <div style={{backgroundColor:"#000000", border: '2px solid #262223',  height:"auto", float: "left", width: "auto",display: "flex", textColor: "#FFFFFF", padding:"7px", borderRadius:"2%", margin: "6px"}} >
-    <label style={{ backgroundColor:"#000000", color:"#FFFFFF", height:"25px", display: "flex", textColor: "#FFFFFF", }}>
-      {checkbox_vals[ind]}
-      - {tag}
-    </label>
-  </div>:
-  <div style={{backgroundColor:"#FFFFFF", border: '2px solid #262223', color: "#000000", height:"auto", float: "left", width: "auto",display: "flex", padding:"7px", borderRadius:"2%", margin: "6px"}} >
-    <label style={{ backgroundColor:"#FFFFFF", color:"#000000", height:"25px", display: "flex", }}>
-      {checkbox_vals[ind]}
-      + {tag}
-    </label>
+  checkboxes[ind] == 0?
+  <button onClick={checkClicked(ind)} style={{backgroundColor:"#fbfbf6", border: '2px solid #262223',  color: "#fbfbf6", height:"auto", float: "left", width: "auto",display: "flex", textColor: "#fbfbf6", padding:"7px", borderRadius:"2%", margin: "6px"}} >
+    <div style={{ backgroundColor:"#fbfbf6", color:"#262223", height:"20px", display: "flex", textColor: "#fbfbf6", alignItems:"center",}}>
+      <AddIcon style={{ height: "20px", backgroundColor: "#fbfbf6",color:"#9D6A53"}}/> {tag}
+    </div>
+  </button>:
+  <button onClick={checkClicked(ind)} style={{backgroundColor:"#262223", border: '2px solid #262223',  color: "#262223", height:"auto", float: "left", width: "auto",display: "flex", textColor: "#262223", padding:"7px", borderRadius:"2%", margin: "6px"}} >
+  <div style={{ backgroundColor:"#262223", color:"#fbfbf6", height:"20px", display: "flex", textColor: "#262223", alignItems:"center",}}>
+    <CloseIcon style={{ height: "20px", backgroundColor: "#262223",color:"#fbfbf6"}}/> {tag}
   </div>
+</button>
+  // <button onClick={checkClicked(ind)}  style={{backgroundColor:"#FFFFFF", border: '2px solid #262223', color: "#000000", height:"auto", float: "left", width: "auto",display: "flex", padding:"7px", borderRadius:"2%", margin: "6px"}} >
+  //   <div style={{ height: "20px", backgroundColor:"#9D6A53", color:"#000000", height:"25px", display: "flex", alignItems:"center", }}>
+  //     {checkbox_vals[ind]}
+  //     <AddIcon style={{ color:"#000000"}}/> {tag}
+  //   </div>
+  // </button>
 );
 
 const each_tag = [];
@@ -107,15 +109,14 @@ for(let i = 0; i < tags.length; i++) {
   s ?
     <Grid item xs={12} sm={4}>
       <Box sx={{ minWidth: 200 }}>
-        <Card variant="outlined">
+        <Card variant="outlined" style={{ borderLeft: "none", borderRight: "none", borderBottom: "none", borderColor: "#262223",  borderRadius: "0px",borderWidth: "2px"}}>
           <React.Fragment>
             <CardContent sx = {{minHeight: 200}}>
               <h3>{project_names[i]}</h3>
               <p>{each_tag[i]}</p>
               <p><details>
-                <summary>< span style={{color: "#9D6A53"}}>Project Description</span></summary>
-                <p>{project_descriptions[i]}</p>
-                <p>Tools used</p>
+                <summary>< span style={{color: "#262223"}}>Project Description</span></summary>
+                <p style={{color: "#262223"}}>{project_descriptions[i]}</p>
               </details></p>
             </CardContent>
           </React.Fragment>
@@ -136,7 +137,7 @@ return (
           <div>
             {tag_menu}
           </div>
-          <Box sx={{ flexGrow: 1 }} style={{marginTop:30}}>
+          <Box sx={{ flexGrow: 1 }} style={{marginTop:"230px"}}>
             <Grid container spacing={2}>
             {cards}
             </Grid>

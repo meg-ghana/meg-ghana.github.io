@@ -29,12 +29,13 @@ const Education = (props) => {
     const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
         height: 18,
         borderRadius: 0,
-        border: theme.palette.mode === 'light'? '2px solid #262223' : '2px solid #DDC6B6',
+        border: '2px solid #262223',
         [`&.${linearProgressClasses.colorPrimary}`]: {
-          backgroundColor: theme.palette.mode === 'light' ? '#F8F7F4' : '#262223',
+          backgroundColor: '#F8F7F4' ,
         },
         [`& .${linearProgressClasses.bar}`]: {
-          backgroundColor: theme.palette.mode === 'light' ? '#262223' : '#F8F7F4',
+            borderRight: '2px solid #262223',
+          backgroundColor: '#9D6A53' ,
         },
       }));
     const skills = skill_progress.map(skill =>
