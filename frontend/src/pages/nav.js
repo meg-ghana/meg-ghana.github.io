@@ -1,5 +1,5 @@
 import React from 'react';
-import resume from '../MeghanaGopannagari_Resume_sp24.pdf';
+import resume from '../MeghanaGopannagari_Resume_2024.pdf';
 import HomeIcon from '@mui/icons-material/Home';
 const Nav = (props) => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import resume from '../MeghanaGopannagari_Resume_sp24.pdf';
+import resume from '../MeghanaGopannagari_Resume_2024.pdf';
 import Nav from './nav.js'
 import Contact from './Contact.js'
 const Introduction = (props) => {

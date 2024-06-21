@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
-import resume from '../MeghanaGopannagari_Resume_sp24.pdf';
+import resume from '../MeghanaGopannagari_Resume_2024';
 import Introduction from './Introduction.js'
 import Education from './Education.js'
 import Projects from './Projects.js'
