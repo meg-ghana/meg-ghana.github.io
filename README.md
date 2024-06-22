@@ -1,1 +1,1 @@
-Hi, I'm Meghana
+Hi, I'm Meghana! This is my personal website to highlight all of the work I've done over the years. If you have any feedback on the website or if you run into any issues, feel free to reach out via email (meghana . gopannagari at gmail.com)!
